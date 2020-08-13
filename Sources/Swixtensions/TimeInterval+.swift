@@ -14,19 +14,19 @@ public extension TimeInterval {
 }
 
 public extension TimeInterval {
-    var inSeconds: Double {
+    var inSeconds: TimeInterval {
         return self
     }
 
-    var inMinutes: Double {
+    var inMinutes: TimeInterval {
         return self / 60.0
     }
 
-    var inHours: Double {
+    var inHours: TimeInterval {
         return self.inMinutes / 60.0
     }
 
-    var inDays: Double {
+    var inDays: TimeInterval {
         return self.inHours / 24.0
     }
 }
