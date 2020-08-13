@@ -14,9 +14,18 @@ public extension UserDefaults {
 }
 
 public extension UserDefaults {
-    func decodedValue<T: Codable>(forKey key: String) -> T? {
+    func decodedValue<T: Codable>(forKey key: String, dateDecodingStrategy: JSONDecoder.DataDecodingStrategy? = nil) -> T? {
         guard let value = self.value(forKey: key) as? Data else { return nil }
-        guard let decoded = try? JSONDecoder().decode(T.self, from: value) else { return nil }
+
+        let decoder = JSONDecoder()
+
+        if let dateDecodingStrategy = dateDecodingStrategy {
+            decoder.dataDecodingStrategy = dateDecodingStrategy
+        } else {
+            decoder.dateDecodingStrategy = .deferredToDate
+        }
+
+        guard let decoded = try? decoder.decode(T.self, from: value) else { return nil }
 
         return decoded
     }
