@@ -24,9 +24,8 @@ public extension UserDefaults {
     func set<T: Codable>(_ value: T, forKey key: String) throws {
         do {
             let encoded = try JSONEncoder().encode(value)
-            let data = try JSONSerialization.data(withJSONObject: encoded, options: [])
 
-            self.setValue(data, forKey: key)
+            self.setValue(encoded, forKey: key)
         } catch {
             throw UserDefaults.Error.encodingFailed(error)
         }
