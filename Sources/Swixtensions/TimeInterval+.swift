@@ -14,6 +14,13 @@ public extension TimeInterval {
 }
 
 public extension TimeInterval {
+    /// The standard animation interval for use without the app. The value for this
+    /// constant was derived from the deprecated method `setAnimationDuration(_:)` on
+    /// UIView. See https://developer.apple.com/documentation/uikit/uiview/1622617-setanimationduration
+    static let standardAnimationInterval = 0.2
+}
+
+public extension TimeInterval {
     var inSeconds: TimeInterval {
         return self
     }
