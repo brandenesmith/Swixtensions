@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension UserDefaults {
+public extension UserDefaults {
     enum Error: Swift.Error {
         case encodingFailed(Swift.Error)
     }
 }
 
-extension UserDefaults {
+public extension UserDefaults {
     func decodedValue<T: Codable>(forKey key: String) -> T? {
         guard let value = self.value(forKey: key) as? Data else { return nil }
         guard let decoded = try? JSONDecoder().decode(T.self, from: value) else { return nil }
