@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Int32 {
+public extension Int32 {
     func compactMap<T>(_ transform: (Int32) -> T?) -> T? {
         return transform(self)
     }
