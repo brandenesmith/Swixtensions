@@ -8,6 +8,8 @@
 import Foundation
 
 #if canImport(UIKit)
+import UIKit
+
 public extension UIView {
     @IBInspectable public var cornerRadius: CGFloat {
         get {

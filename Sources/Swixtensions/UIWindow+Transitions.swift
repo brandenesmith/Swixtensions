@@ -9,6 +9,8 @@
 import Foundation
 
 #if canImport(UIKit)
+import UIKit
+
 public extension UIWindow {
     struct TransitionOptions {
 
