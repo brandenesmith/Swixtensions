@@ -7,11 +7,7 @@
 
 import Foundation
 
-#if !os(macOS)
-import UIKit
-#endif
-
-#if !os(macOS)
+#if canImport(UIKit)
 public extension UIView {
     @IBInspectable public var cornerRadius: CGFloat {
         get {

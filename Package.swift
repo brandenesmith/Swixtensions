@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "Swixtensions",
+    platforms: [
+        .iOS(.v13)
+    ],
     products: [
         .library(
             name: "Swixtensions",
