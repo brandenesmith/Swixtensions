@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
 
     /// Returns a string with all the characters in the given set removed.
     /// - parameters:
