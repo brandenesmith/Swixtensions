@@ -13,4 +13,10 @@ public extension Decodable {
 
         return decoded
     }
+
+    static func decode(from dictionary: [String: Any]) throws -> Self {
+        let decoded = try JSONDecoder().decode(Self.self, from: dictionary)
+
+        return decoded
+    }
 }
