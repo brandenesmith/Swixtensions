@@ -15,7 +15,17 @@ public extension UserDefaults {
 
 public extension UserDefaults {
     func decodedValue<T: Codable>(forKey key: String, dateDecodingStrategy: JSONDecoder.DataDecodingStrategy? = nil) -> T? {
-        guard let value = self.value(forKey: key) as? Data else { return nil }
+        var value: Data
+
+        if CommandLine.arguments.contains("--uiTest") {
+            guard let string = self.value(forKey: key) as? String else { return nil }
+            guard let data = string.data(using: .utf8) else { return nil }
+
+            value = data
+        } else {
+            guard let data = self.value(forKey: key) as? Data else { return nil }
+            value = data
+        }
 
         let decoder = JSONDecoder()
 
