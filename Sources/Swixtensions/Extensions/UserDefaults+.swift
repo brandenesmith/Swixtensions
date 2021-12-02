@@ -14,7 +14,7 @@ public extension UserDefaults {
 }
 
 public extension UserDefaults {
-    func decodedValue<T: Codable>(forKey key: String, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = nil) -> T? {
+    func decodedValue<T: Codable>(forKey key: String, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .iso8601) -> T? {
         var value: Data
 
         #if DEBUG
