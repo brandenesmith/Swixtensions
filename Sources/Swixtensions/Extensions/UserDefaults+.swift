@@ -40,7 +40,7 @@ public extension UserDefaults {
         let decoder = JSONDecoder()
 
         if let dateDecodingStrategy = dateDecodingStrategy {
-            decoder.dataDecodingStrategy = dateDecodingStrategy
+            decoder.dateDecodingStrategy = dateDecodingStrategy
         } else {
             decoder.dateDecodingStrategy = .deferredToDate
         }
