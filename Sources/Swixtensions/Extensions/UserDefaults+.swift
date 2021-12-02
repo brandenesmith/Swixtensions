@@ -14,7 +14,7 @@ public extension UserDefaults {
 }
 
 public extension UserDefaults {
-    func decodedValue<T: Codable>(forKey key: String, dateDecodingStrategy: JSONDecoder.DataDecodingStrategy? = nil) -> T? {
+    func decodedValue<T: Codable>(forKey key: String, dateDecodingStrategy: JSONDecoder.DateDecodingStrategy? = .iso8601) -> T? {
         var value: Data
 
         #if DEBUG
@@ -40,7 +40,7 @@ public extension UserDefaults {
         let decoder = JSONDecoder()
 
         if let dateDecodingStrategy = dateDecodingStrategy {
-            decoder.dataDecodingStrategy = dateDecodingStrategy
+            decoder.dateDecodingStrategy = dateDecodingStrategy
         } else {
             decoder.dateDecodingStrategy = .deferredToDate
         }
@@ -52,7 +52,10 @@ public extension UserDefaults {
 
     func set<T: Codable>(_ value: T, forKey key: String) throws {
         do {
-            let encoded = try JSONEncoder().encode(value)
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+
+            let encoded = try encoder.encode(value)
 
             self.setValue(encoded, forKey: key)
         } catch {
