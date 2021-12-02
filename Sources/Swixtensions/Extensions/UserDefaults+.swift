@@ -52,7 +52,10 @@ public extension UserDefaults {
 
     func set<T: Codable>(_ value: T, forKey key: String) throws {
         do {
-            let encoded = try JSONEncoder().encode(value)
+            let encoder = JSONEncoder()
+            encoder.dateEncodingStrategy = .iso8601
+
+            let encoded = try encoder.encode(value)
 
             self.setValue(encoded, forKey: key)
         } catch {
